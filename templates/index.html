@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakerZ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>SneakerZ</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="#">Review</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="featured-sneakers">
+            <h2>Featured Sneakers</h2>
+            <div class="sneaker-tiles">
+                {% for sneaker in featured_sneakers %}
+                <div class="sneaker-tile">
+                    <img src="{{ sneaker.image }}" alt="{{ sneaker.name }}">
+                    <h3>{{ sneaker.name }}</h3>
+                    <p>{{ sneaker.description }}</p>
+                    <p>Rating: <span class="rating">{{ sneaker.rating }}</span></p>
+                    <form method="POST" action="{{ url_for('rate') }}">
+                        <input type="hidden" name="sneaker_id" value="{{ sneaker.id }}">
+                        <label for="rating-{{ sneaker.id }}">Rate this sneaker:</label>
+                        <input type="number" id="rating-{{ sneaker.id }}" name="rating" min="0" max="5" step="0.1">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+        <section id="top-rated-sneakers">
+            <h2>Top Rated Sneakers</h2>
+            <div class="sneaker-tiles">
+                {% for sneaker in top_rated_sneakers %}
+                <div class="sneaker-tile">
+                    <img src="{{ sneaker.image }}" alt="{{ sneaker.name }}">
+                    <h3>{{ sneaker.name }}</h3>
+                    <p>{{ sneaker.description }}</p>
+                    <p>Rating: <span class="rating">{{ sneaker.rating }}</span></p>
+                    <form method="POST" action="{{ url_for('rate') }}">
+                        <input type="hidden" name="sneaker_id" value="{{ sneaker.id }}">
+                        <label for="rating-{{ sneaker.id }}">Rate this sneaker:</label>
+                        <input type="number" id="rating-{{ sneaker.id }}" name="rating" min="0" max="5" step="0.1">
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; SneakerZ 2024</p>
+    </footer>
+</body>
+</html>

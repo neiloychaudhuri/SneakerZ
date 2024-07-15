@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #222;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.sneaker-tiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.sneaker-tile {
+    background-color: #d3d3d3;
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(25% - 20px); /* 4 tiles per row */
+    box-sizing: border-box;
+}
+
+.sneaker-tile img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
